@@ -4,29 +4,22 @@ import cv2
 import numpy as np
 import tensorflow as tf
 
-# Suppress TF logs
+
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 
-# ----------------------------
-# Resolve absolute model path
-# ----------------------------
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_PATH = os.path.join(BASE_DIR, "..", "model", "video_model.h5")
 MODEL_PATH = os.path.normpath(MODEL_PATH)
 
-# ----------------------------
-# Load the model
-# ----------------------------
+
 try:
     model = tf.keras.models.load_model(MODEL_PATH)
 except Exception as e:
     print(f"Error loading model: {e}", file=sys.stderr)
     sys.exit(1)
 
-# ----------------------------
-# Frame preprocessing
-# ----------------------------
-FRAME_SIZE = (128, 128)  # Change to match your training size
+
+FRAME_SIZE = (128, 128)  
 
 def preprocess_frame(frame):
     frame = cv2.resize(frame, FRAME_SIZE)
@@ -34,9 +27,7 @@ def preprocess_frame(frame):
     frame = np.expand_dims(frame, axis=0)
     return frame
 
-# ----------------------------
-# Predict video function
-# ----------------------------
+
 def predict_video(video_path):
     cap = cv2.VideoCapture(video_path)
     predictions = []
@@ -53,12 +44,9 @@ def predict_video(video_path):
     cap.release()
 
     avg_pred = float(np.mean(predictions))
-    label = 1 if avg_pred <= 0.5 else 0  # 1 = Real, 0 = Fake
+    label = 1 if avg_pred <= 0.5 else 0 
     return label, avg_pred
 
-# ----------------------------
-# Script entry point
-# ----------------------------
 if __name__ == "__main__":
     if len(sys.argv) < 2:
         sys.exit(1)

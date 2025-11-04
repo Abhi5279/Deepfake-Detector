@@ -106,7 +106,7 @@ function UploadVideo() {
           Deepfake Video Detector
         </h1>
 
-        {/* File Input */}
+        
         <input
           type="file"
           accept="video/*"
@@ -119,7 +119,7 @@ function UploadVideo() {
                      hover:file:bg-opacity-20 cursor-pointer mb-6 transition-all"
         />
 
-        {/* Video Preview */}
+
         {videoPreview && (
           <div className="mb-6 flex justify-center">
             <video
@@ -130,7 +130,7 @@ function UploadVideo() {
           </div>
         )}
 
-        {/* Predict Button */}
+      
         <button
           onClick={handleUpload}
           disabled={loading}
@@ -142,7 +142,7 @@ function UploadVideo() {
           {loading ? "Predicting..." : "Predict"}
         </button>
 
-        {/* Prediction Output */}
+        
         {prediction && (
           <div className="mt-10 text-center">
             <p className="text-2xl font-semibold tracking-wide mb-4">
@@ -155,7 +155,7 @@ function UploadVideo() {
               Confidence: {confidence.toFixed(2)}%
             </p>
 
-            {/* Confidence Chart */}
+            
             <div className="bg-white bg-opacity-5 backdrop-blur-md border border-white border-opacity-10 p-4 rounded-xl">
               <Bar data={chartData} options={chartOptions} />
             </div>

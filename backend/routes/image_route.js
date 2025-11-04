@@ -7,7 +7,7 @@ import fs from "fs";
 const router = express.Router();
 const upload = multer({ dest: "uploads/" });
 
-// Absolute path to Python script
+
 const predict_image = path.resolve("python_files/predict_image.py");
 
 router.post("/predict-image", upload.single("image"), (req, res) => {
@@ -17,9 +17,9 @@ router.post("/predict-image", upload.single("image"), (req, res) => {
 
   const imagePath = path.resolve(req.file.path);
 
-  // Run Python script
+  
   exec(`python "${predict_image}" "${imagePath}"`, (err, stdout, stderr) => {
-    // Remove uploaded file after prediction
+   
     fs.unlinkSync(imagePath);
 
     if (err) {

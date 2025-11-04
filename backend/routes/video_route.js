@@ -17,7 +17,7 @@ router.post("/predict-video", upload.single("video"), (req, res) => {
   const videoPath = path.resolve(req.file.path);
 
   exec(`python "${predict_video}" "${videoPath}"`, (err, stdout, stderr) => {
-    fs.unlinkSync(videoPath); // delete uploaded file
+    fs.unlinkSync(videoPath); 
 
     if (err) {
       console.error("❌ Prediction error:", stderr);
