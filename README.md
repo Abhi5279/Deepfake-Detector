@@ -75,7 +75,7 @@ Component-based architecture
 
 ⚙️ Setup Instructions
 1️⃣ Clone Repository
-git clone https://github.com/Abhi5279/Deepfake-Detector
+git clone https://github.com/Abhi5279/Deepfake-Detector.git
 cd Deepfake-Detector
 
 2️⃣ Backend Setup
