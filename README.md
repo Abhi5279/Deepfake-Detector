@@ -1,6 +1,4 @@
-Understood. You want the README updated to use generic AI-related wording, not explicitly “Gemini”.
 
-Below is the updated README.md content aligned with your frontend routes and using neutral AI terminology.
 
 🔍 AI Media Authenticity Detection System
 
